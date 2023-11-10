@@ -28,13 +28,15 @@ class UserModelTestCase(unittest.TestCase):
             u.password
 
     def test_password_verification(self):
-        u = User(password='cat')
+        u = User(password='fish')
         self.assertTrue(u.verify_password('cat'))
         self.assertFalse(u.verify_password('dog'))
+        
+      
 
     def test_password_salts_are_random(self):
         u = User(password='cat')
-        u2 = User(password='dog')
+        u2 = User(password='cat')
         self.assertTrue(u.password_hash != u2.password_hash)
 
     def test_valid_confirmation_token(self):
